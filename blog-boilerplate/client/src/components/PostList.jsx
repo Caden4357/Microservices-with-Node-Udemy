@@ -3,11 +3,11 @@ import axios from 'axios';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 const PostList = (props) => {
-    const [posts, setPosts] = useState({});
+    const {posts, setPosts} = props;
 
 
     const fetchPosts = async () => {
-        const response = await axios.get('http://localhost:4000/posts');
+        const response = await axios.get('http://localhost:4002/posts');
         console.log('POST LIST: ', response.data);
         setPosts(response.data);
     }
@@ -23,7 +23,7 @@ const PostList = (props) => {
                 <div className="card-body">
                     <h3>{post.title}</h3>
                     <CommentForm postId={post.id}/>
-                    <CommentList postId={post.id}/>
+                    <CommentList comments={post.comments}/>
                 </div>
             </div>
         )

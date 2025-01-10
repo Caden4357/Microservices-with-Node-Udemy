@@ -7,6 +7,7 @@ app.use(express.json());
 const events = [];
 
 app.post('/events', (req, res) => {
+    console.log('Received Event');
     const event = req.body;
     events.push(event);
 
