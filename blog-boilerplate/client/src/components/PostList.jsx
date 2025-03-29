@@ -6,15 +6,14 @@ const PostList = (props) => {
     const {posts, setPosts} = props;
 
 
-    const fetchPosts = async () => {
-        const response = await axios.get('http://localhost:4002/posts');
-        console.log('POST LIST: ', response.data);
-        setPosts(response.data);
-    }
-
     useEffect(() => {
+        const fetchPosts = async () => {
+            const response = await axios.get('http://localhost:4002/posts');
+            console.log('POST LIST: ', response.data);
+            setPosts(response.data);
+        };
         fetchPosts();
-    }, []);
+    }, [setPosts]);
 
     // Object.values will return an array of objects
     const renderPosts = Object.values(posts).map(post => {
