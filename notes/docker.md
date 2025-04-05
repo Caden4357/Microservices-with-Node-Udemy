@@ -57,3 +57,17 @@ docker kill <container-id>
 docker exec -it <container-id>  
 ```
 - -it means interactive terminal, so you can run commands in the container as if you were in a terminal. 
+- to build an image from a Dockerfile, use the command:
+```
+docker build . -t <your-docker-id/repo-or-proj-name:version>. 
+example: docker build . -t caden43/redis-image:latest .
+```
+- run the image with the command:
+```
+docker run dockerid/project-name
+```
+- docker commit allows you to create a new image from a container.
+- You dont usually do this but it exists
+```
+docker commit -c 'command' <container-id>
+```
