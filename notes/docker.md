@@ -54,7 +54,7 @@ docker kill <container-id>
 
 - to run a command or start another program like redis-cli in a running container maybe already running redis-server, for example.
 ```
-docker exec -it <container-id>  
+docker exec -it <container-id> <program/command> 
 ```
 - -it means interactive terminal, so you can run commands in the container as if you were in a terminal. 
 - to build an image from a Dockerfile, use the command:
@@ -71,3 +71,9 @@ docker run dockerid/project-name
 ```
 docker commit -c 'command' <container-id>
 ```
+- To accept incoming requests on a port you can use:
+```
+docker run -p 8080:8080 caden43/simpleweb
+```
+
+- WORKDIR is important because it sets the working dir for the container also for the newer versions of node you must define the workdir in the dockerfile or it will not work.
