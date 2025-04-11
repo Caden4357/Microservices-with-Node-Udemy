@@ -21,8 +21,16 @@
     - make sure the image tag is either blank or specified to latest in the config file
     - make your update to the code 
     - build the image 
-    - push the imagge to docker hub
+    - push the image to docker hub with the command docker push <docker-hub-username>/<image-name>
     - run the command
 ```
 kubectl rollout restart deployment <deployment-name>
 ```
+# Services:
+# - A service is a Kubernetes object that defines a logical set of pods and a policy to access them. It provides a stable endpoint for accessing the pods, regardless of their IP addresses or locations in the cluster. Services enable communication between different parts of an application, such as between the frontend and backend.
+# Types of services:
+    - Cluster IP - Sets up an easy to remember url to access a pod only exposes pods in the cluster 
+    - Node Port - makes a pod accessible from outside the cluster usually only for dev purposes 
+    - Load Balancer - sets up a load balancer in front of the pods and exposes them to the outside world. This is the most common type of service used in production environments.
+    - External name redirect an in cluster request to a CNAME url... dont worry about this one 
+    
