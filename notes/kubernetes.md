@@ -33,4 +33,3 @@ kubectl rollout restart deployment <deployment-name>
     - Node Port - makes a pod accessible from outside the cluster usually only for dev purposes 
     - Load Balancer - sets up a load balancer in front of the pods and exposes them to the outside world. This is the most common type of service used in production environments.
     - External name redirect an in cluster request to a CNAME url... dont worry about this one 
-    
