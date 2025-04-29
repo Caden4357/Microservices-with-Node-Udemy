@@ -18,7 +18,7 @@ app.post('/posts/:id/comments', async (req, res) => {
     const comments = commentsByPostId[req.params.id] || []; // get the comments for the post if they exist, or create an empty array
     comments.push({ id: commentId, content, status:'pending' }); // add the new comment to the array
     commentsByPostId[req.params.id] = comments; // save the comments array back to the post
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
         type: 'CommentCreated',
         data: {
             id: commentId,
@@ -41,7 +41,7 @@ app.post('/events', (req, res) => {
         });
         comment.status = status;
         console.log('Comment:', comment);
-        axios.post('http://localhost:4005/events', {
+        axios.post('http://event-bus-srv:4005/events', {
             type: 'CommentUpdated',
             data: {
                 id,
