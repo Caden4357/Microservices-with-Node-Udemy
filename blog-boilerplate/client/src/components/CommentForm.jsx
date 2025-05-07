@@ -8,7 +8,7 @@ const CommentForm = ({postId}) => {
         e.preventDefault();
         try {
             const newComment = {content: comment};
-            const response = await axios.post(`http://localhost:4001/posts/${postId}/comments`, newComment);
+            const response = await axios.post(`http://posts.com/posts/${postId}/comments`, newComment);
             console.log('NEW COMMENT: ', response);
             setComment('');
         } catch (error) {

@@ -33,3 +33,27 @@ kubectl rollout restart deployment <deployment-name>
     - Node Port - makes a pod accessible from outside the cluster usually only for dev purposes 
     - Load Balancer - sets up a load balancer in front of the pods and exposes them to the outside world. This is the most common type of service used in production environments.
     - External name redirect an in cluster request to a CNAME url... dont worry about this one 
+
+# Important note on ingress controller: Route methods dont matter so you cant have a get to /posts and a post to /posts it doesnt read the method only the path so each must be unique 
+
+# NOTES ON DIFFERENCES IN VIDEOS VS REAL LIFE 
+    - dockerfile for vite react apps is slightly diff. use node: 23-alpine and CMD ["npm", "run", "dev"] 
+    - ingress-srv is different: 
+    - you still need the following line for unique paths 
+```
+    nginx.ingress.kubernetes.io/use-regex: "true"
+```
+    - and each path is set up like so:
+```
+        - path: /posts/create
+            pathType: Prefix
+            backend:
+              service:
+                name: posts-clusterip-srv
+                port:
+                  number: 4000
+```
+    - in vite.config add the following to server:
+```
+allowedHosts: ['localhost', '127.0.0.1', 'posts.com']
+```

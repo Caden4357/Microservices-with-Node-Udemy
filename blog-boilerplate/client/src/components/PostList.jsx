@@ -8,7 +8,7 @@ const PostList = (props) => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await axios.get('http://localhost:4002/posts');
+            const response = await axios.get('http://posts.com/posts');
             console.log('POST LIST: ', response.data);
             setPosts(response.data);
         };
