@@ -1,0 +1,51 @@
+Your current Kubernetes context is still pointing to the GKE cluster, and because you're no longer signed in or that cluster is unreachable, kubectl is hanging while trying to connect to it.
+
+How to Fix It
+✅ 1. Check Current Context
+Run:
+
+bash
+Copy
+Edit
+kubectl config current-context
+If it says something like gke_PROJECT_REGION_CLUSTER_NAME, then yeah, it's still pointing to your GKE cluster.
+
+✅ 2. View All Contexts
+Check what other contexts you have:
+
+bash
+Copy
+Edit
+kubectl config get-contexts
+This will list your local and remote clusters. Look for something like minikube, docker-desktop, or kind-xxx for local Kubernetes.
+
+✅ 3. Switch to Local Kubernetes
+Pick your local context (e.g., docker-desktop, minikube, or kind-my-cluster) and run:
+
+bash
+Copy
+Edit
+kubectl config use-context docker-desktop
+# or
+kubectl config use-context minikube
+# or
+kubectl config use-context kind-my-cluster
+✅ 4. (Optional) Delete GKE Contexts
+If you don’t plan to ever use GKE again:
+
+bash
+Copy
+Edit
+kubectl config delete-context gke_PROJECT_REGION_CLUSTER_NAME
+kubectl config delete-cluster gke_PROJECT_REGION_CLUSTER_NAME
+kubectl config unset users.gke_PROJECT_REGION_CLUSTER_NAME
+🔄 Reset Everything (Nuclear Option)
+If it's all a mess and you want to start clean:
+
+bash
+Copy
+Edit
+mv ~/.kube/config ~/.kube/config.backup
+Then start your local Kubernetes (e.g., minikube start) to regenerate a fresh config.
+
+Let me know if you're using minikube, Docker Desktop, or kind for local K8s — I can tailor the advice.

@@ -1,5 +1,6 @@
 import express from 'express';
 import startDb from './config/mongoose.config';
+import cookieSession from 'cookie-session';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import { currentUserRouter } from './routes/current-user';
@@ -9,7 +10,15 @@ import { signupRouter } from './routes/signup';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFound } from './errors/not-found-error';
 const app = express();
+app.set('trust proxy', true);
 app.use(json());
+app.use(
+    cookieSession({
+        signed:false,
+        secure:true,
+    })
+);
+
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
@@ -23,8 +32,12 @@ app.all('*', async (req, res, next) => {
 
 app.use(errorHandler);
 
+
 startDb();
 
 app.listen(3000, () => {
+    if(!process.env.JWT_KEY){
+        throw new Error('JWT not defined')
+    }
     console.log('Listening on port 3000!');
 })

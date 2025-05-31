@@ -4,10 +4,8 @@ manifests:
   rawYaml:
     - ./infra/k8s/*
 build:
-  googleCloudBuild:
-    projectId: ticketing-dev-458621
   artifacts:
-    - image: us.gcr.io/ticketing-dev-458621/auth
+    - image: caden43/auth
       context: auth
       docker:
         dockerfile: Dockerfile

@@ -26,7 +26,19 @@ const userSchema = new Schema({
         type: String,
         required: true
     }
-}, {timestamps:true})
+}, {
+    timestamps:true, 
+    toJSON:{
+        transform(doc, ret){
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.password;
+            delete ret.__v;
+            delete ret.createdAt;
+            delete ret.updatedAt;
+        }
+    },
+})
 
 
 userSchema.pre('save', async function(next){

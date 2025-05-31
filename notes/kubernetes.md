@@ -57,3 +57,8 @@ kubectl rollout restart deployment <deployment-name>
 ```
 allowedHosts: ['localhost', '127.0.0.1', 'posts.com']
 ```
+
+# Create secret keys 
+```
+kubectl create secret generic name-of-secret --from-literal=SECRET_KEY=asf32ff3rfafefaew234af44234f
+```
