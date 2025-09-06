@@ -1,0 +1,10 @@
+? what is docker?
+Docker is a platform that enables developers to automate the deployment, scaling, and management of applications using containerization technology. Containers allow applications to run consistently across different computing environments by packaging the application code and its dependencies into a single unit. This helps to eliminate issues related to environment differences and simplifies the development and deployment process.
+? How does Docker work?
+Docker uses a client-server architecture. The Docker client communicates with the Docker daemon, which is responsible for building, running, and managing containers. Developers create Docker images, which are lightweight, standalone, and executable packages that include everything needed to run an application. These images can be stored in a registry (like Docker Hub) and can be pulled to any environment where Docker is installed. When a container is started from an image, it runs in an isolated environment, ensuring that it behaves the same way regardless of where it is deployed.
+? What are the key components of Docker?
+1. Docker Engine: The core component that enables containerization. It consists of a server (the Docker daemon) and a REST API for interacting with the daemon.
+2. Docker Images: Read-only templates used to create containers. They include the application code, libraries, and dependencies.
+3. Docker Containers: Instances of Docker images that run in isolated environments. Containers can be started, stopped, and managed independently.
+4. Dockerfile: A text file that contains instructions for building a Docker image. It specifies the base image, application code, and any dependencies.
+5. Docker Hub: A cloud-based registry for storing and sharing Docker images. Developers can pull images from Docker Hub or push their own images to the registry.

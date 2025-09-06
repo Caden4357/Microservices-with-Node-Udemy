@@ -47,5 +47,3 @@ Copy
 Edit
 mv ~/.kube/config ~/.kube/config.backup
 Then start your local Kubernetes (e.g., minikube start) to regenerate a fresh config.
-
-Let me know if you're using minikube, Docker Desktop, or kind for local K8s — I can tailor the advice.
