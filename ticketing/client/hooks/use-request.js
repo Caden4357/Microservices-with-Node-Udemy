@@ -1,13 +1,19 @@
 import axios from "axios";
 import { useState } from "react";
 
-export const useRequest = ({ url, method, body }) => {
+// this is a custom hook to make HTTP requests and handle errors
+// it takes an object with url, method, and body as parameters
+// it returns a function to make the request and any errors that occur
+export const useRequest = ({ url, method, body, onSuccess }) => {
     const [errors, setErrors] = useState(null);
 
     const doRequest = async () => {
         try {
             setErrors(null);
             const response = await axios[method](url, body);
+            if (onSuccess) {
+                onSuccess(response.data);
+            }
             return response.data;
         }
         catch (err) {

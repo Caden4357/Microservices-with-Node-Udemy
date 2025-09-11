@@ -62,3 +62,19 @@ allowedHosts: ['localhost', '127.0.0.1', 'posts.com']
 ```
 kubectl create secret generic name-of-secret --from-literal=SECRET_KEY=asf32ff3rfafefaew234af44234f
 ```
+
+# Cross namespace service communication
+- a namespace is like a sandbox for kubernetes objects to organize them 
+```
+kubectl get namespaces
+```
+- to get a list of namespaces
+- to communicate between namespaces use the following format for the service name
+```
+http://<nameofservice>.<namespace>.svc.cluster.local
+```
+- to list namespaces in a service that isnt in the default namespace use the -n flag
+```
+kubectl get services -n <namespace>
+```
+- you can create an external name service to make it easier to access a service in another namespace 
